@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styles from "./App.module.scss";
 
-function App() {
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <main className={styles.page}>
+      <header className={styles.header}>
+        <h1>Battleships</h1>
       </header>
-    </div>
-  );
-}
 
-export default App;
+      <section className={styles.main}>Game board</section>
+
+      <footer className={styles.footer}>
+        <a
+          href="https://streetartutopia.com/2022/02/28/russian-warship-go-f-k-yourself-graffiti-on-the-main-bridge-of-vilnius-in-lithuania/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Russian warship, go fuck yourself
+        </a>
+      </footer>
+    </main>
+  );
+};
