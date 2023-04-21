@@ -1,4 +1,4 @@
-$base-margin: 24px;
+$base-padding: 24px;
 
 .page {
   height: 100vh;
@@ -9,7 +9,7 @@ $base-margin: 24px;
 
 .header {
   height: 56px;
-  margin: $base-margin;
+  padding: $base-padding 0;
 }
 
 .main {
@@ -20,5 +20,5 @@ $base-margin: 24px;
 
 .footer {
   height: 24px;
-  margin: $base-margin;
+  padding: $base-padding 0;
 }

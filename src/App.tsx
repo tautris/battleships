@@ -1,14 +1,17 @@
 import React from "react";
 import styles from "./App.module.scss";
+import { Board } from "./components/board/Board";
 
-export const App = () => {
+export const App: React.FC = () => {
   return (
     <main className={styles.page}>
       <header className={styles.header}>
         <h1>Battleships</h1>
       </header>
 
-      <section className={styles.main}>Game board</section>
+      <section className={styles.main}>
+        <Board />
+      </section>
 
       <footer className={styles.footer}>
         <a

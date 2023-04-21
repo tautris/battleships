@@ -1,0 +1,17 @@
+.cell {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: 2px solid;
+  outline-offset: -1px; // maybe fun to animate this from big to negative big, to -1 again at the opening of board
+}
+
+.shot {
+  &:before {
+    content: "\2295"; // ⊕
+    font-size: 30px;
+    color: red;
+  }
+}
