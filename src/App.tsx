@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./App.module.scss";
-import { Board } from "./components/board/Board";
+import { Game } from "./components/game/Game";
 
 export const App: React.FC = () => {
   return (
@@ -9,9 +9,7 @@ export const App: React.FC = () => {
         <h1>Battleships</h1>
       </header>
 
-      <section className={styles.main}>
-        <Board />
-      </section>
+      <Game />
 
       <footer className={styles.footer}>
         <a

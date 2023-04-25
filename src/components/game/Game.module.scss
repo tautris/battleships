@@ -1,0 +1,17 @@
+.container {
+  flex: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.turn {
+  width: 100%;
+  text-align: center;
+}
+
+.controls {
+  width: 100%;
+  text-align: center;
+}
