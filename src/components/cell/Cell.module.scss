@@ -1,11 +1,16 @@
 .cell {
-  width: 56px;
-  height: 56px;
+  width: 36px;
+  height: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
   outline: 2px solid;
   outline-offset: -1px; // maybe fun to animate this from big to negative big, to -1 again at the opening of board
+
+  @media (min-width: 576px) {
+    width: 56px;
+    height: 56px;
+  }
 }
 
 .shot {
