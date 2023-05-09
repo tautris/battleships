@@ -1,4 +1,6 @@
 import React from "react";
+import classNames from "classnames";
+
 import { Cell } from "../cell/Cell";
 
 import styles from "./Board.module.scss";
@@ -8,6 +10,7 @@ interface Props {
   own: boolean;
   ships: number[];
   shots: number[];
+  shotTaken?: boolean;
   onClick: (index: number) => void;
 }
 
@@ -16,12 +19,15 @@ export const Board: React.FC<Props> = ({
   own,
   ships,
   shots,
+  shotTaken,
   onClick,
 }) => {
   return (
     <div>
       <h5 className={styles.name}>{own ? "Yer dudes" : "Baddies"}</h5>
-      <div className={styles.container}>
+      <div
+        className={classNames(styles.container, shotTaken && styles.unallowed)}
+      >
         {Array.from(Array(100)).map((_el, index) => (
           <Cell
             key={index}

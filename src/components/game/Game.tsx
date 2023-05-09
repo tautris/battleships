@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { Board } from "../board/Board";
 import { SwitchScreen } from "../switch-screen/SwitchScreen";
 import styles from "./Game.module.scss";
+import { validateShipPlacement } from "./placement-validation";
 
 export const Game: React.FC = () => {
   const [player1Ships, setPlayer1Ships] = useState<number[]>([]);
@@ -12,6 +13,7 @@ export const Game: React.FC = () => {
   const [switchScreen, setSwitchScreen] = useState<boolean>(false);
   const [placementPhase, setPlacementPhase] = useState<boolean>(true);
   const [gameWon, setGameWon] = useState<boolean>(false);
+  const [shotTaken, setShotTaken] = useState<boolean>(false);
 
   const ownShots = useMemo(
     () => (player1Turn ? player1Shots : player2Shots),
@@ -47,11 +49,12 @@ export const Game: React.FC = () => {
 
   const handleNextPlayerClick = () => {
     if (placementPhase) {
-      console.log("ownShips", ownShips);
+      const validationMessage = validateShipPlacement(ownShips);
 
-      // do validation
-      // const validationMessages = validateShipPlacement(ownShips);
-      // console.log("validationMessages", validationMessages);
+      if (validationMessage) {
+        alert(validationMessage);
+        return;
+      }
     }
 
     setSwitchScreen(true);
@@ -62,6 +65,7 @@ export const Game: React.FC = () => {
       setPlacementPhase(false);
     }
 
+    setShotTaken(false);
     setPlayer1Turn(!player1Turn);
     setSwitchScreen(false);
   };
@@ -78,19 +82,25 @@ export const Game: React.FC = () => {
   };
 
   const handleShot = (index: number) => {
+    if (shotTaken) {
+      return;
+    }
+
     const setShots = player1Turn ? setPlayer1Shots : setPlayer2Shots;
     const newShots = [...ownShots, index];
-
     setShots(newShots);
+    setShotTaken(true);
   };
 
   const handleNewGame = () => {
     setPlacementPhase(true);
     setGameWon(false);
+    setPlayer1Turn(true);
     setPlayer1Ships([]);
     setPlayer2Ships([]);
     setPlayer1Shots([]);
     setPlayer2Shots([]);
+    setShotTaken(false);
   };
 
   return (
@@ -102,6 +112,7 @@ export const Game: React.FC = () => {
         />
       ) : (
         <>
+          <h2>{placementPhase ? "Place your ships!" : "Fire!"}</h2>
           <h3 className={styles.turn}>
             {player1Turn ? "Player1" : "Player2"} turn
           </h3>
@@ -117,6 +128,7 @@ export const Game: React.FC = () => {
             own={false}
             ships={enemyShips}
             shots={ownShots}
+            shotTaken={shotTaken}
             onClick={placementPhase ? handlePlacement : handleShot}
           />
           <div className={styles.controls}>
