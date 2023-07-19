@@ -1,0 +1,13 @@
+# Create separate for prod in the future, for example RUN yarn install --production and etc
+# Reference https://docs.docker.com/compose/production/
+
+services:
+  frontend:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
+
+volumes:
+  dev-bind-mount:
