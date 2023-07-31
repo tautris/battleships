@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { Cell } from "../cell/Cell";
+import { Cell } from "@/components/cell/Cell";
 
 import styles from "./Board.module.scss";
 

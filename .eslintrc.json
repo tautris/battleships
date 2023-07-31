@@ -1,0 +1,58 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "simple-import-sort",
+    "no-relative-import-paths"
+  ],
+  "rules": {
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          // Side effect imports.
+          ["^\\u0000"],
+          // Packages.
+          // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
+          // `react` related packages come first.
+          ["^react", "^@?\\w"],
+          // Absolute imports
+          // Anything not matched in another group.
+          ["^"],
+          // Relative imports
+          // Anything that starts with a dot.
+          ["^\\."],
+          // Styles
+          // matching .module.(scss|sass|css)
+          ["\\.module\\.(sc|sa|c)ss$"]
+        ]
+      }
+    ],
+    "no-relative-import-paths/no-relative-import-paths": [
+      "error",
+      { "allowSameFolder": true, "rootDir": "src", "prefix": "@" }
+    ]
+  }
+}

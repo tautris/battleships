@@ -29,7 +29,7 @@ export const Cell: React.FC<Props> = ({
   };
 
   return (
-    <div
+    <button
       className={classNames(
         styles.cell,
         shot && styles.shot,

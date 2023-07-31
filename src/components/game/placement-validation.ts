@@ -15,8 +15,8 @@ const validateShipPlacement = (shipIndexes: number[]): string | undefined => {
     const [firstRow, firstCol] = blob[0];
 
     return (
-      blob.every(([_row, col]) => col === firstCol) ||
-      blob.every(([row, _col]) => row === firstRow)
+      blob.every(([, col]) => col === firstCol) ||
+      blob.every(([row]) => row === firstRow)
     );
   });
 
@@ -63,7 +63,7 @@ function labelShips(board: number[][]): number[][] {
   for (let i = 0; i < height; i++) {
     for (let j = 0; j < width; j++) {
       if (board[i][j] !== 0) {
-        let neighbors: number[] = [];
+        const neighbors: number[] = [];
 
         // Find all 8-connected neighbors with a label
         if (i > 0 && j > 0 && labels[i - 1][j - 1] !== 0) {
@@ -86,12 +86,12 @@ function labelShips(board: number[][]): number[][] {
           nextLabel++;
         } else {
           // Find the smallest label among neighbors and assign it
-          let minLabel = Math.min(...neighbors);
+          const minLabel = Math.min(...neighbors);
           labels[i][j] = minLabel;
 
           // Update equivalent labels
           for (let k = 0; k < neighbors.length; k++) {
-            let neighborLabel = neighbors[k];
+            const neighborLabel = neighbors[k];
             if (neighborLabel !== minLabel) {
               equivalentLabels[neighborLabel] = minLabel;
             }

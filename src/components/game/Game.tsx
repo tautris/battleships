@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { Board } from "../board/Board";
-import { SwitchScreen } from "../switch-screen/SwitchScreen";
-import styles from "./Game.module.scss";
+import React, { useEffect, useMemo, useState } from "react";
+
+import { Board } from "@/components/board/Board";
+import { SwitchScreen } from "@/components/switch-screen/SwitchScreen";
+
 import { validateShipPlacement } from "./placement-validation";
+
+import styles from "./Game.module.scss";
 
 export const Game: React.FC = () => {
   const [player1Ships, setPlayer1Ships] = useState<number[]>([]);

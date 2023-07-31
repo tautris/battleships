@@ -1,6 +1,8 @@
 import React from "react";
+
+import { Game } from "@/components/game/Game";
+
 import styles from "./App.module.scss";
-import { Game } from "./components/game/Game";
 
 export const App: React.FC = () => {
   return (

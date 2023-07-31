@@ -28,4 +28,3 @@ It can be run locally with hot reload via docker with
 ```
 docker compose up
 ```
-
