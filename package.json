@@ -21,8 +21,12 @@
   "scripts": {
     "start": "react-scripts start",
     "format": "yarn prettier --write .",
-    "lint": "yarn eslint src/**/*.{ts,tsx}",
-    "lint:fix": "yarn eslint --fix src/**/*.{ts,tsx}",
+    "lint": "yarn lint:ts & yarn lint:styles",
+    "lint:fix": "yarn lint:ts:fix & yarn lint:styles:fix",
+    "lint:ts": "yarn eslint src/**/*.{ts,tsx}",
+    "lint:ts:fix": "yarn eslint --fix src/**/*.{ts,tsx}",
+    "lint:styles": "yarn stylelint \"**/*.scss\"",
+    "lint:styles:fix": "yarn stylelint --fix \"**/*.scss\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -51,6 +55,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "prettier": "^3.0.0",
+    "stylelint": "^15.10.2",
+    "stylelint-config-standard-scss": "^10.0.0",
     "surge": "^0.23.1",
     "typescript-plugin-css-modules": "^5.0.1"
   }
